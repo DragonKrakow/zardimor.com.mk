@@ -145,16 +145,16 @@
     }
     .btn:hover { background: var(--brown); transform: translateY(-1px); }
 
-    /* ── Equipment Gallery ── */
+    /* ── Equipment Gallery (Updated to allow full screen layout sizes) ── */
     #oprema {
       background: var(--cream);
       border-top: 2px solid var(--border);
       border-bottom: 2px solid var(--border);
     }
     .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+      display: flex;
+      flex-direction: column; /* Stacked layout so images aren't squeezed side-by-side */
+      gap: 2.5rem;
       margin-top: 1.5rem;
     }
     .gallery-item {
@@ -163,11 +163,11 @@
       overflow: hidden;
       box-shadow: var(--shadow);
       border: 1.5px solid var(--border);
+      width: 100%;
     }
     .gallery-item img {
       width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
+      height: auto;          /* Complete native proportion */
       display: block;
     }
     .gallery-caption {
@@ -228,7 +228,8 @@
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      padding: .7rem 1rem;      border: 1.5px solid var(--border);
+      padding: .7rem 1rem;
+      border: 1.5px solid var(--border);
       border-radius: var(--radius);
       font-family: 'Georgia', serif;
       font-size: .95rem;
@@ -271,7 +272,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="#pocetna" class="nav-brand">ZARDIMOR</a>
@@ -284,7 +284,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="pocetna">
   <div class="container">
     <img src="logo.png" alt="Zardimor Лого" class="logo" onerror="this.style.display='none'" />
@@ -293,7 +292,6 @@
   </div>
 </section>
 
-<!-- CENOVNIK -->
 <section id="cenovnik">
   <div class="container">
     <h3>Мени</h3>
@@ -310,7 +308,6 @@
   </div>
 </section>
 
-<!-- EQUIPMENT GALLERY -->
 <section id="oprema">
   <div class="container">
     <h3>Опрема</h3>
@@ -335,7 +332,6 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="kontakt">
   <div class="container">
     <h3>Контакт</h3>
@@ -343,7 +339,6 @@
     <p>Имате прашање, сугестија или сакате да нарачате во поголема количина? Пишете ни!</p>
 
     <div class="contact-grid">
-      <!-- Info -->
       <div class="contact-info">
         <div class="contact-row">
           <span class="icon">✉️</span>
@@ -368,7 +363,6 @@
         </div>
       </div>
 
-      <!-- Form -->
       <form
         class="contact-form"
         action="https://formsubmit.co/info@zadimor.com.mk"
@@ -395,7 +389,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="social-links">
     <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
