@@ -7,7 +7,6 @@
   <style>
     /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --warm:    #ffffff;
       --cream:   #f7f7f7;
@@ -19,9 +18,7 @@
       --radius:  8px;
       --shadow:  0 2px 12px rgba(0,0,0,.08);
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Georgia', serif;
       background: var(--warm);
@@ -102,9 +99,10 @@
       border-bottom: 2px solid var(--border);
     }
     #pocetna .logo {
-      width: 120px;
+      max-width: 140px;
+      height: auto;
+      object-fit: contain;
       margin-bottom: 1.5rem;
-      border-radius: 50%;
     }
     #pocetna p {
       max-width: 600px;
@@ -168,9 +166,8 @@
     }
     .gallery-item img {
       width: 100%;
-      height: 280px;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
-      object-position: center;
       display: block;
     }
     .gallery-caption {
@@ -231,8 +228,7 @@
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      padding: .7rem 1rem;
-      border: 1.5px solid var(--border);
+      padding: .7rem 1rem;      border: 1.5px solid var(--border);
       border-radius: var(--radius);
       font-family: 'Georgia', serif;
       font-size: .95rem;
@@ -291,8 +287,7 @@
 <!-- HERO -->
 <section id="pocetna">
   <div class="container">
-    <img src="logo.png" alt="Zardimor Лого" class="logo"
-         onerror="this.style.display='none'" />
+    <img src="logo.png" alt="Zardimor Лого" class="logo" onerror="this.style.display='none'" />
     <h1>Подготвуваме со љубов<br>палачинки за вас!</h1>
     <p>Вкусете ги најдобрите традиционални домашни палачинки подготвени по оригинален рецепт со најсвежи состојки.</p>
   </div>
@@ -348,7 +343,6 @@
     <p>Имате прашање, сугестија или сакате да нарачате во поголема количина? Пишете ни!</p>
 
     <div class="contact-grid">
-
       <!-- Info -->
       <div class="contact-info">
         <div class="contact-row">
@@ -374,48 +368,29 @@
         </div>
       </div>
 
-      <!-- Form → FormSubmit (no backend needed, works on GitHub Pages) -->
+      <!-- Form -->
       <form
         class="contact-form"
         action="https://formsubmit.co/info@zadimor.com.mk"
         method="POST"
         onsubmit="handleSubmit(event)"
       >
-        <!-- FormSubmit config -->
         <input type="hidden" name="_subject" value="Нова порака од Zardimor сајтот" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
-        <!-- Honeypot -->
         <input type="text" name="_honey" style="display:none" />
 
         <div class="form-row">
-          <input
-            type="text"
-            name="name"
-            placeholder="Вашето Име"
-            required
-            autocomplete="name"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Вашата Е-пошта"
-            required
-            autocomplete="email"
-          />
+          <input type="text" name="name" placeholder="Вашето Име" required autocomplete="name" />
+          <input type="email" name="email" placeholder="Вашата Е-пошта" required autocomplete="email" />
         </div>
-        <textarea
-          name="message"
-          placeholder="Порака..."
-          required
-        ></textarea>
+        <textarea name="message" placeholder="Порака..." required></textarea>
         <button type="submit" class="btn">Испрати Порака →</button>
 
         <div class="form-success" id="form-success">
           ✅ Пораката е испратена! Ќе ве контактираме наскоро.
         </div>
       </form>
-
     </div>
   </div>
 </section>
@@ -434,11 +409,7 @@
 </footer>
 
 <script>
-  // Show a brief success message; FormSubmit handles the actual send
   function handleSubmit(e) {
-    // Let the form submit normally (FormSubmit will handle it)
-    // Optionally show inline feedback after redirect if you add _next param
-    // For pure SPA feel, use FormSubmit AJAX:
     e.preventDefault();
     const form = e.target;
     const data = new FormData(form);
@@ -458,11 +429,9 @@
       }
     })
     .catch(() => {
-      // fallback: let normal form POST happen
       form.submit();
     });
   }
 </script>
-
 </body>
 </html>
