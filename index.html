@@ -145,16 +145,16 @@
     }
     .btn:hover { background: var(--brown); transform: translateY(-1px); }
 
-    /* ── Equipment Gallery (Updated to allow full screen layout sizes) ── */
+    /* ── Equipment Gallery ── */
     #oprema {
       background: var(--cream);
       border-top: 2px solid var(--border);
       border-bottom: 2px solid var(--border);
     }
     .gallery-grid {
-      display: flex;
-      flex-direction: column; /* Stacked layout so images aren't squeezed side-by-side */
-      gap: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
       margin-top: 1.5rem;
     }
     .gallery-item {
@@ -163,11 +163,11 @@
       overflow: hidden;
       box-shadow: var(--shadow);
       border: 1.5px solid var(--border);
-      width: 100%;
     }
     .gallery-item img {
       width: 100%;
-      height: auto;          /* Complete native proportion */
+      height: auto;          /* Allows the image to expand to its full natural height */
+      object-fit: contain;   /* Ensures the entire picture shows without clipping or stretching */
       display: block;
     }
     .gallery-caption {
@@ -301,7 +301,7 @@
       <span class="pdf-icon">📄</span>
       <div>
         <strong>Комплетна понуда</strong>
-        <p>Слатки и солени палачинки, пијалаци и додатоци</p>
+        <p>Слатки и солени палачинки, пијалаци i додатоци</p>
       </div>
       <a href="cenovnik.pdf" class="btn" target="_blank">Преземи PDF</a>
     </div>
